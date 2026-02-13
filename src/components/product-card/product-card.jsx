@@ -117,14 +117,14 @@ const ProductCard = ({
         price = currencyFormat(
           priceDetails.min,
           priceDetails.currency_symbol,
-          formatLocale(locale, countryCode, true)
+          formatLocale(locale, countryCode, true),
         );
         break;
       case "max":
         price = currencyFormat(
           priceDetails.max,
           priceDetails.currency_symbol,
-          formatLocale(locale, countryCode, true)
+          formatLocale(locale, countryCode, true),
         );
         break;
       case "range":
@@ -133,16 +133,16 @@ const ProductCard = ({
             ? `${currencyFormat(
                 priceDetails.min,
                 priceDetails.currency_symbol,
-                formatLocale(locale, countryCode, true)
+                formatLocale(locale, countryCode, true),
               )} - ${currencyFormat(
                 priceDetails.max,
                 priceDetails.currency_symbol,
-                formatLocale(locale, countryCode, true)
+                formatLocale(locale, countryCode, true),
               )}`
             : currencyFormat(
                 priceDetails.min,
                 priceDetails.currency_symbol,
-                formatLocale(locale, countryCode, true)
+                formatLocale(locale, countryCode, true),
               );
         break;
       default:
@@ -157,7 +157,7 @@ const ProductCard = ({
   const colorVariants = useMemo(() => {
     const variants = product.variants?.find(
       (variant) =>
-        variant.display_type === "color" || variant.display_type === "image"
+        variant.display_type === "color" || variant.display_type === "image",
     );
 
     if (!variants?.items?.length) {
@@ -165,7 +165,7 @@ const ProductCard = ({
     }
 
     const defaultVariant = variants.items.find(
-      (variant) => product.slug === variant.slug
+      (variant) => product.slug === variant.slug,
     );
 
     return {
@@ -191,7 +191,7 @@ const ProductCard = ({
       }
       return product?.media?.filter((media) => media.type === "image") || [];
     },
-    [product?.media]
+    [product?.media],
   );
 
   // Memoized image data to prevent unnecessary recalculations
@@ -253,7 +253,7 @@ const ProductCard = ({
   const gridClass = useMemo(
     () =>
       `${columnCount?.mobile === 2 ? styles["mob-grid-2-card"] : styles["mob-grid-1-card"]} ${columnCount?.tablet === 2 ? styles["tablet-grid-2-card"] : styles["tablet-grid-3-card"]} ${columnCount?.desktop === 2 ? styles["desktop-grid-2-card"] : styles["desktop-grid-4-card"]}`,
-    [columnCount?.desktop, columnCount?.tablet, columnCount?.mobile]
+    [columnCount?.desktop, columnCount?.tablet, columnCount?.mobile],
   );
 
   const handleAddToCartClick = (event) => {
@@ -273,7 +273,7 @@ const ProductCard = ({
         setSelectedVariant(variant);
       }
     },
-    [currentShade?.uid]
+    [currentShade?.uid],
   );
 
   return (
@@ -285,7 +285,9 @@ const ProductCard = ({
       } ${styles.animate} ${gridClass} ${isSlider ? styles.sliderCard : ""}`}
       onClick={onClick}
     >
-      <div className={`${styles.imageContainer} ${customImageContainerClass} ${!product.sellable ? styles.outOfStockContainer : ""}`}>
+      <div
+        className={`${styles.imageContainer} ${customImageContainerClass} ${!product.sellable ? styles.outOfStockContainer : ""}`}
+      >
         {!isMobile && showImageOnHover && imageData.hoverUrl && (
           <FyImage
             src={imageData.hoverUrl}
@@ -432,6 +434,7 @@ const ProductCard = ({
           </FyButton>
         )}
       </div>
+      <span>Test</span>
     </div>
   );
 };
